@@ -1,10 +1,36 @@
-// STARTING DATA ================
+$(document).ready(function () {
+  // STARTING DATA ================
+  //   var submitButton = $("#submitWeather");
+  // API Key for string
+  //   var APIKey = "feaada4b2efe0257a0c1c4eed38596f1";
 
-var submitBtn = $("mySubmit").value;
-console.log("test");
+  $("#submitWeather").click(function () {
+    console.log("check button");
+    var city = $("#city").val();
+    if (city != "") {
+      $.ajax({
+        url:
+          "http://api.openweathermap.org/data/2.5/weather?q=" +
+          city +
+          "&units=imperial" +
+          "&APPID=feaada4b2efe0257a0c1c4eed38596f1",
+        type: "GET",
+        dateType: "jsonp",
+        success: function (data) {
+          console.log(data);
+        },
+      });
+    } else {
+      $("error").html("Field cannot be empty ");
+    }
+  });
+});
 
-// API Key for string
-var APIKey = "feaada4b2efe0257a0c1c4eed38596f1";
+// // AJAX Call
+// $.ajax({
+//     url: queryURL,
+//     method: "GET",
+// }).then(function (response) {
 
 //   HELPER FUNCTIONS ==================
 
@@ -12,23 +38,16 @@ var APIKey = "feaada4b2efe0257a0c1c4eed38596f1";
 // user types in search form for city
 //  click "search" button
 
-$(document).on("click", ".saveBtn", function () {
-  event.preventDefault();
-  console.log("im here");
-  var person = $(this).attr("data-person");
-  var queryURL =
-    "api.openweathermap.org/data/2.5/weather?q=Boston&appid=" +
-    APIKey +
-    "&units=imperial";
-  // AJAX call
-  $.ajax({
-    url: queryURL,
-    method: "GET",
-  }).then(function (response) {
-    // Create CODE HERE to Log the queryURL
-    console.log(response);
-  });
-});
+// $(document).on("click", ".saveBtn", function () {
+// event.preventDefault();
+// console.log("im here");
+// var city = $(this).attr("data-person");
+// var queryURL =
+//     "api.openweathermap.org/data/2.5/weather?q=Boston&appid=" +
+//     APIKey +
+//     "&units=imperial";
+
+// });
 
 // search function is run through API
 // site displays weather conditions from API

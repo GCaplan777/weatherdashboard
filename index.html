@@ -14,11 +14,10 @@
         <!-- left column-->
         <div class="col-md-3">
           <!-- input for searches -->
-          <form>
-            <label for="search">City Search:</label><br />
-            <input type="text" id="cityName" name="cityname" value="" /><br />
-            <input type="submit" id="mySubmit" value="Submit the form" />
-          </form>
+          
+          <div class="row form-group form-inline" id="rowDiv">
+            <input type="text" name="city" id="city" class="form-control" placeholder =  "City Name">
+            <button id= "submitWeather" class="btn btn-primary">Search City</button>
 
           <!-- FORM for saved searches (NAME CHANGE T/K!!!!!) -->
           <div class="todos">
@@ -45,6 +44,7 @@
                 This is a modified jumbotron that occupies the entire horizontal
                 space of its parent.
               </p>
+              <span id="error"></span>
             </div>
           </div>
 
