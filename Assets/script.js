@@ -1,6 +1,35 @@
+// STARTING DATA ================
+
+var submitBtn = $("mySubmit").value;
+console.log("test");
+
+// API Key for string
+var APIKey = "feaada4b2efe0257a0c1c4eed38596f1";
+
+//   HELPER FUNCTIONS ==================
+
 // We have a website featuring weather
 // user types in search form for city
 //  click "search" button
+
+$(document).on("click", ".saveBtn", function () {
+  event.preventDefault();
+  console.log("im here");
+  var person = $(this).attr("data-person");
+  var queryURL =
+    "api.openweathermap.org/data/2.5/weather?q=Boston&appid=" +
+    APIKey +
+    "&units=imperial";
+  // AJAX call
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    // Create CODE HERE to Log the queryURL
+    console.log(response);
+  });
+});
+
 // search function is run through API
 // site displays weather conditions from API
 // Main section = current weather conditions
