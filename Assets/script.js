@@ -4,8 +4,15 @@ $(document).ready(function () {
   // API Key for string
   //   var APIKey = "feaada4b2efe0257a0c1c4eed38596f1";
 
+  //   USER INTERACTION
+
+  //   user enters city name
+  // user hits "submit"
+
   $("#submitWeather").click(function () {
     console.log("check button");
+    // i may not need b/c its button not form, but event.preventDefault
+    event.preventDefault();
     var city = $("#city").val();
     if (city != "") {
       $.ajax({
@@ -18,6 +25,10 @@ $(document).ready(function () {
         dateType: "jsonp",
         success: function (data) {
           console.log(data);
+          var widget = show(data);
+          $("#show").html(widget);
+          console.log("show");
+          $("#city").val("");
         },
       });
     } else {
@@ -25,35 +36,25 @@ $(document).ready(function () {
     }
   });
 });
+function show(data) {
+  return (
+    "<h3>Weather</h3>: " + data.weather[0].main + "</h3" >
+    +"<h3>Description</h3>: " +
+      data.weather[0].description +
+      "</h3>" +
+      "<h3>Temperature</h3>: " +
+      data.main.temp +
+      "</h3>"
+  );
+}
 
-// // AJAX Call
-// $.ajax({
-//     url: queryURL,
-//     method: "GET",
-// }).then(function (response) {
+// $("#cityName").html(response.main.temp);
+// UPDATE DISPLAY
 
-//   HELPER FUNCTIONS ==================
-
-// We have a website featuring weather
-// user types in search form for city
-//  click "search" button
-
-// $(document).on("click", ".saveBtn", function () {
-// event.preventDefault();
-// console.log("im here");
-// var city = $(this).attr("data-person");
-// var queryURL =
-//     "api.openweathermap.org/data/2.5/weather?q=Boston&appid=" +
-//     APIKey +
-//     "&units=imperial";
-
-// });
-
-// search function is run through API
-// site displays weather conditions from API
 // Main section = current weather conditions
-// SubSection = future conditions
-// Left column is populated with search history
+// function show(data){
+//     return "$(."display-4") "
+// }
 
 // Main section display:
 // Row1: city name, date, icon representing weather considetion
@@ -61,6 +62,9 @@ $(document).ready(function () {
 // humidity
 // wind speed
 // UV index: featuring: color that indicates conditions favorable, moderate, or severe
+
+// SubSection = future conditions
+// Left column is populated with search history
 
 // Subsection displays 5 columns each with
 // date
