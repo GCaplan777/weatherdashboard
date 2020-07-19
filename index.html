@@ -20,31 +20,22 @@
         <!-- left column-->
         <div class="col-md-3">
           <!-- input for searches -->
-          <div class="row form-group form-inline" id="rowDiv">
-            <input
-              type="text"
-              name="city"
-              id="city"
-              class="form-control"
-              placeholder="City Name"
-            />
+          <div>
+            <input type="text" id="city" />
             <button id="submitWeather" class="btn btn-primary">
               Search City
             </button>
           </div>
           <!-- FORM for saved searches (NAME CHANGE T/K!!!!!) -->
-          <div class="todos">
-            <form id="todo-form" method="POST">
-              <label for="todo-text">Add a Todo:</label>
-              <input
-                type="text"
-                placeholder="What needs to be done?"
-                name="todo-text"
-                id="todo-text"
-              />
-            </form>
-            <p>Todo Count: <span id="todo-count">0</span></p>
-            <ul id="todo-list"></ul>
+          <div class="saved-search">
+            <button type="button">Detroit</button>
+            <button type="button">Richmond</button>
+            <button type="button">New York</button>
+            <button type="button">Camden</button>
+            <button type="button">Chicago</button>
+            <button type="button">Tokyo</button>
+            <button type="button">Kyoto</button>
+            <button type="button">Houston</button>
           </div>
         </div>
 
@@ -52,77 +43,62 @@
         <div class="col-md-9">
           <div class="jumbotron jumbotron-fluid">
             <div class="container">
-              <h2 id="cityName" class="display-4"></h2>
-              <p class="lead">
-                This is a modified jumbotron that occupies the entire horizontal
-                space of its parent.
-              </p>
-              <span id="error"></span>
-              <div>id="show"</div>
+              <h2 id="cityDisplay" class="display-4">City Name</h2>
+              <div id="currentDate">date</div>
+              <div>
+                <img id="weathIcon" />
+              </div>
+              <div>Temperature</div>
+              <div>Humidity</div>
+              <div>Wind Speed</div>
+              <div>UV Index</div>
             </div>
           </div>
 
           <!-- and subdisplay of future forecasts -->
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+          <Row>
+            <h2>5-Day Forecast:</h2>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date</h5>
+                <div>icon</div>
+                <div>temp</div>
+                <div>humidity</div>
+              </div>
             </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date</h5>
+                <div>icon</div>
+                <div>temp</div>
+                <div>humidity</div>
+              </div>
             </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date</h5>
+                <div>icon</div>
+                <div>temp</div>
+                <div>humidity</div>
+              </div>
             </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date</h5>
+                <div>icon</div>
+                <div>temp</div>
+                <div>humidity</div>
+              </div>
             </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Date</h5>
+                <div>icon</div>
+                <div>temp</div>
+                <div>humidity</div>
+              </div>
             </div>
-          </div>
+          </Row>
         </div>
       </div>
     </div>

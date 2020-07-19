@@ -1,54 +1,45 @@
-$(document).ready(function () {
-  // STARTING DATA ================
-  //   var submitButton = $("#submitWeather");
-  // API Key for string
-  //   var APIKey = "feaada4b2efe0257a0c1c4eed38596f1";
+// STARTING DATA ================
+var cityName;
 
-  //   USER INTERACTION
-
-  //   user enters city name
-  // user hits "submit"
-
-  $("#submitWeather").click(function () {
-    console.log("check button");
-    // i may not need b/c its button not form, but event.preventDefault
-    event.preventDefault();
-    var city = $("#city").val();
-    if (city != "") {
-      $.ajax({
-        url:
-          "http://api.openweathermap.org/data/2.5/weather?q=" +
-          city +
-          "&units=imperial" +
-          "&APPID=feaada4b2efe0257a0c1c4eed38596f1",
-        type: "GET",
-        dateType: "jsonp",
-        success: function (data) {
-          console.log(data);
-          var widget = show(data);
-          $("#show").html(widget);
-          console.log("show");
-          $("#city").val("");
-        },
-      });
-    } else {
-      $("error").html("Field cannot be empty ");
-    }
-  });
+$("#submitWeather").on("click", function () {
+  event.preventDefault();
+  cityName = $("#city").val();
+  console.log(cityName);
+  currentWeather();
 });
-function show(data) {
-  return (
-    "<h3>Weather</h3>: " + data.weather[0].main + "</h3" >
-    +"<h3>Description</h3>: " +
-      data.weather[0].description + 
-      "</h3>" +
-      "<h3>Temperature</h3>: " +
-      data.main.temp +
-      "</h3>"
-  );
+
+function currentWeather() {
+  $("#cityDisplay").text(cityName);
+  var date = moment().format("MMM Do YY");
+  console.log(date);
+  $("#currentDate").text(date);
+  var APIKey = "166a433c57516f51dfab1f7edaed8413";
+  var queryURL =
+    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    cityName +
+    "&appid=" +
+    APIKey;
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    var weathIcon = response.weather[0].icon;
+    console.log(weathIcon);
+    var iconURl = "http://openweathermap.org/img/wn/" + weathIcon + "@2x.png";
+    $("#weathIcon").attr("src", iconURl, (alt = "weather icon"));
+  });
 }
 
-// $("#cityName").html(response.main.temp);
+//   var submitButton = $("#submitWeather");
+// API Key for string
+//   var APIKey = "feaada4b2efe0257a0c1c4eed38596f1";
+
+//   USER INTERACTION
+
+//   user enters city name
+// user hits "submit"
+
 // UPDATE DISPLAY
 
 // Main section = current weather conditions
@@ -78,4 +69,4 @@ function show(data) {
 // User is again presented with DATA for that city (could be updated if later in day and user is still in the same browser?)
 
 // If the user closes and opens the weather dashboard,
-// user sees last searched city forecast
+// user sees last searched city
