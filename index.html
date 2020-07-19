@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" type="text/css" href="Assets/style.css" />
   </head>
   <body>
@@ -14,11 +20,18 @@
         <!-- left column-->
         <div class="col-md-3">
           <!-- input for searches -->
-          
           <div class="row form-group form-inline" id="rowDiv">
-            <input type="text" name="city" id="city" class="form-control" placeholder =  "City Name">
-            <button id= "submitWeather" class="btn btn-primary">Search City</button>
-
+            <input
+              type="text"
+              name="city"
+              id="city"
+              class="form-control"
+              placeholder="City Name"
+            />
+            <button id="submitWeather" class="btn btn-primary">
+              Search City
+            </button>
+          </div>
           <!-- FORM for saved searches (NAME CHANGE T/K!!!!!) -->
           <div class="todos">
             <form id="todo-form" method="POST">
@@ -45,7 +58,7 @@
                 space of its parent.
               </p>
               <span id="error"></span>
-              <div> id="show"</div>
+              <div>id="show"</div>
             </div>
           </div>
 
@@ -111,7 +124,7 @@
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

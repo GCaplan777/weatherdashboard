@@ -40,7 +40,7 @@ function show(data) {
   return (
     "<h3>Weather</h3>: " + data.weather[0].main + "</h3" >
     +"<h3>Description</h3>: " +
-      data.weather[0].description +
+      data.weather[0].description + 
       "</h3>" +
       "<h3>Temperature</h3>: " +
       data.main.temp +
