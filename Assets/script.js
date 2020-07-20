@@ -18,7 +18,8 @@ function currentWeather() {
     "http://api.openweathermap.org/data/2.5/weather?q=" +
     cityName +
     "&appid=" +
-    APIKey;
+    APIKey +
+    "&units=imperial";
   $.ajax({
     url: queryURL,
     method: "GET",
@@ -28,6 +29,28 @@ function currentWeather() {
     console.log(weathIcon);
     var iconURl = "http://openweathermap.org/img/wn/" + weathIcon + "@2x.png";
     $("#weathIcon").attr("src", iconURl, (alt = "weather icon"));
+    // create temperature var
+    var temperture = response.main.temp;
+    // console log
+    console.log(temperture);
+    // place data
+    $("#temp").text(temperture);
+    // create humidity var
+    var humidity = response.main.humidity;
+    // console log
+    console.log(humidity);
+    // place data
+    $("#humid").text(humidity);
+    // create wind index var
+    var windSpeed = response.wind.speed;
+    // console log
+    console.log(windSpeed);
+    // place data
+    $("#wind-speed").text(windSpeed);
+
+    // create UV index var
+    // console log
+    // place data
   });
 }
 
