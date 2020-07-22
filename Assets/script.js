@@ -1,6 +1,8 @@
 // STARTING DATA ================
 var cityName;
 
+// USER INTERACTION
+
 $("#submitWeather").on("click", function () {
   event.preventDefault();
   cityName = $("#city").val();
@@ -9,10 +11,15 @@ $("#submitWeather").on("click", function () {
 });
 
 function currentWeather() {
+  // selecting cityDisplay to update text
   $("#cityDisplay").text(cityName);
+  // creating Date with moment method
   var date = moment().format("MMM Do YY");
+  // console log
   console.log(date);
+  // updating display with DATE
   $("#currentDate").text(date);
+  // creating var to setup Ajax
   var APIKey = "166a433c57516f51dfab1f7edaed8413";
   var queryURL =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
@@ -25,8 +32,11 @@ function currentWeather() {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    // create weather icon var
     var weathIcon = response.weather[0].icon;
+    // console log
     console.log(weathIcon);
+    // update display with icon
     var iconURl = "http://openweathermap.org/img/wn/" + weathIcon + "@2x.png";
     $("#weathIcon").attr("src", iconURl, (alt = "weather icon"));
     // create temperature var
@@ -48,9 +58,23 @@ function currentWeather() {
     // place data
     $("#wind-speed").text(windSpeed);
 
-    // create UV index var
-    // console log
-    // place data
+    // create UV index var with NEW URL, SAME KEY
+    var queryUvURL =
+      "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+      APIKey +
+      "&lat=" +
+      response.coord.lat +
+      "&lon=" +
+      response.coord.lon;
+    $.ajax({
+      url: queryUvURL,
+      method: "GET",
+    }).then(function (response) {
+      // console log
+      console.log(response);
+      // place data
+      $("#uv").text(response.value);
+    });
   });
 }
 
