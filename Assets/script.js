@@ -97,6 +97,15 @@ function currentWeather() {
       // console log
       console.log(response);
       // place data
+      for (let i = 0; i < 5; i += 8) {
+        const forecast = response.list[i];
+        var dateForecast = response.list.dt_txt;
+        var iconForecast = response.list.weather[0].icon;
+        // update display with icon
+        var iconURl =
+          "http://openweathermap.org/img/wn/" + weathIcon + "@2x.png";
+        $("#weathIcon").attr("src", iconURl, (alt = "weather icon"));
+      }
     });
   });
 }
