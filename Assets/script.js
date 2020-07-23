@@ -74,32 +74,32 @@ function currentWeather() {
       console.log(response);
       // place data
       $("#uv").text(response.value);
+      // style conditions favorable, moderate, or severe
+      // if ($("#uv")<= 2) {
+      //   style = "background-color": "green"})
+      // }else if ($("#uv") > 2 && < 6) {
+      //   style = $("#uv").css({"background-color": "yellow"});
+      // } else {
+      //   style = "background-color": "green"})
+      // }
+    });
+    // api.openweathermap.org/data/2.5/forecast?q={city name}&appid={your api key}
+    var query5DayURL =
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
+      cityName +
+      "&appid=" +
+      APIKey +
+      "&units=imperial";
+    $.ajax({
+      url: query5DayURL,
+      method: "GET",
+    }).then(function (response) {
+      // console log
+      console.log(response);
+      // place data
     });
   });
 }
-
-//   var submitButton = $("#submitWeather");
-// API Key for string
-//   var APIKey = "feaada4b2efe0257a0c1c4eed38596f1";
-
-//   USER INTERACTION
-
-//   user enters city name
-// user hits "submit"
-
-// UPDATE DISPLAY
-
-// Main section = current weather conditions
-// function show(data){
-//     return "$(."display-4") "
-// }
-
-// Main section display:
-// Row1: city name, date, icon representing weather considetion
-// temparture
-// humidity
-// wind speed
-// UV index: featuring: color that indicates conditions favorable, moderate, or severe
 
 // SubSection = future conditions
 // Left column is populated with search history
