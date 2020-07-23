@@ -44,19 +44,19 @@ function currentWeather() {
     // console log
     console.log(temperture);
     // place data
-    $("#temp").text(temperture);
+    $("#temp").text("Temperature " + temperture + "°F");
     // create humidity var
     var humidity = response.main.humidity;
     // console log
     console.log(humidity);
     // place data
-    $("#humid").text(humidity);
+    $("#humid").text("Humidity " + humidity + "%");
     // create wind index var
     var windSpeed = response.wind.speed;
     // console log
     console.log(windSpeed);
     // place data
-    $("#wind-speed").text(windSpeed);
+    $("#wind-speed").text("Wind Index " + windSpeed + "MPH");
 
     // create UV index var with NEW URL, SAME KEY
     var queryUvURL =
@@ -97,14 +97,37 @@ function currentWeather() {
       // console log
       console.log(response);
       // place data
-      for (let i = 0; i < 5; i += 8) {
+      let j = 0;
+      for (let i = 0; i < 40; i += 8) {
         const forecast = response.list[i];
-        var dateForecast = response.list.dt_txt;
-        var iconForecast = response.list.weather[0].icon;
+        // create var for date
+        var dateForecast =
+          forecast.dt_txt[5] +
+          forecast.dt_txt[6] +
+          forecast.dt_txt[7] +
+          forecast.dt_txt[8] +
+          forecast.dt_txt[9];
+        // updated display with date
+        $("#5ddate" + j).text(dateForecast);
+        console.log(dateForecast);
+        //  create var for icon
+        var iconForecast = forecast.weather[0].icon;
         // update display with icon
         var iconURl =
-          "http://openweathermap.org/img/wn/" + weathIcon + "@2x.png";
-        $("#weathIcon").attr("src", iconURl, (alt = "weather icon"));
+          "http://openweathermap.org/img/wn/" + iconForecast + "@2x.png";
+        $("#5dicon" + j).attr("src", iconURl, (alt = "weather icon"));
+        console.log(iconForecast);
+        //  create var for temp
+        var dateTemp = forecast.main.temp;
+        console.log(dateTemp);
+        // updated display with temp
+        $("#5dtemp" + j).text("Temp " + dateTemp + "°F");
+        //  create var for humidity
+        var dateHumid = forecast.main.humidity;
+        console.log(dateHumid);
+        // updated display with humidity
+        $("#5dhumid" + j).text("Humidity " + dateHumid + "%");
+        j++;
       }
     });
   });
