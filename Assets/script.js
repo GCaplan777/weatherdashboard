@@ -41,7 +41,7 @@ function currentWeather() {
   // creating var to setup Ajax
   var APIKey = "166a433c57516f51dfab1f7edaed8413";
   var queryURL =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     cityName +
     "&appid=" +
     APIKey +
@@ -56,7 +56,7 @@ function currentWeather() {
     // console log
     console.log(weathIcon);
     // update display with icon
-    var iconURl = "http://openweathermap.org/img/wn/" + weathIcon + "@2x.png";
+    var iconURl = "https://openweathermap.org/img/wn/" + weathIcon + "@2x.png";
     $("#weathIcon").attr("src", iconURl, (alt = "weather icon"));
     // create temperature var
     var temperture = response.main.temp;
@@ -79,7 +79,7 @@ function currentWeather() {
 
     // create UV index var with NEW URL, SAME KEY
     var queryUvURL =
-      "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+      "https://api.openweathermap.org/data/2.5/uvi?appid=" +
       APIKey +
       "&lat=" +
       response.coord.lat +
@@ -93,16 +93,8 @@ function currentWeather() {
       console.log(response);
       // place data
       $("#uv").text(response.value);
-      // style conditions favorable, moderate, or severe
-      // if ($("#uv")<= 2) {
-      //   style = "background-color": "green"})
-      // }else if ($("#uv") > 2 && < 6) {
-      //   style = $("#uv").css({"background-color": "yellow"});
-      // } else {
-      //   style = "background-color": "green"})
-      // }
     });
-    // api.openweathermap.org/data/2.5/forecast?q={city name}&appid={your api key}
+
     var query5DayURL =
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
       cityName +
@@ -133,7 +125,7 @@ function currentWeather() {
         var iconForecast = forecast.weather[0].icon;
         // update display with icon
         var iconURl =
-          "http://openweathermap.org/img/wn/" + iconForecast + "@2x.png";
+          "https://openweathermap.org/img/wn/" + iconForecast + "@2x.png";
         $("#5dicon" + j).attr("src", iconURl, (alt = "weather icon"));
         console.log(iconForecast);
         //  create var for temp
