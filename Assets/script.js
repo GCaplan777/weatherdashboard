@@ -1,5 +1,6 @@
 // STARTING DATA ================
 var cityName;
+var cityArray = [];
 
 // USER INTERACTION
 
@@ -7,6 +8,9 @@ $("#submitWeather").on("click", function () {
   event.preventDefault();
   cityName = $("#city").val();
   console.log(cityName);
+  // pushing city name into Array for local storage
+  cityArray.push(cityName);
+  localStorage.setItem("cities", JSON.stringify(cityArray));
   currentWeather();
 });
 
