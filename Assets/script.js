@@ -2,7 +2,20 @@
 var cityName;
 var cityArray = [];
 
+storageCall();
 // USER INTERACTION
+function storageCall() {
+  $(".saved-search").empty();
+  var storage = JSON.parse(localStorage.getItem("cities"));
+  if (storage !== null) {
+    cityArray = storage;
+  }
+
+  cityArray.forEach((city) => {
+    var newButton = $(`<button type="button"> ${city}</button>`);
+    $(".saved-search").append(newButton);
+  });
+}
 
 $("#submitWeather").on("click", function () {
   event.preventDefault();
@@ -10,7 +23,9 @@ $("#submitWeather").on("click", function () {
   console.log(cityName);
   // pushing city name into Array for local storage
   cityArray.push(cityName);
+
   localStorage.setItem("cities", JSON.stringify(cityArray));
+  storageCall();
   currentWeather();
 });
 
